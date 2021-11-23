@@ -58,13 +58,15 @@ if (HAS_ASAN AND USE_ASAN)
 endif ()
 
 # Here, you can enable all the required 'Boost' components:
-set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_DEBUG_LIBS ON)
+set(Boost_USE_RELEASE_LIBS ON)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost 1.45.0 COMPONENTS program_options) # Try to find your 'Boost' package, right now, we are using 'Boost 1.45.0'.
+find_package(Boost 1.70.0 COMPONENTS program_options system thread) # Try to find your 'Boost' package, right now, we are using 'Boost 1.70.0'.
 
 # Check if the 'Boost' library/packages are found.
 if(Boost_FOUND)
     message("Boost library found!") # Show a message that the 'Boost' library is found.
-    target_link_libraries(TOPIC_1 Boost::program_options) # Here, you are linking all the libraries available the 'Boost' library.
+    target_link_libraries(TOPIC_1 Boost::program_options Boost::system Boost::thread) # Here, you are linking all the libraries available the 'Boost' library.
 endif()
