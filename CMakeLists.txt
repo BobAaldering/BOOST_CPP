@@ -1,14 +1,15 @@
 cmake_minimum_required(VERSION 3.21) # The minimum CMake version used.
-project(TOPIC_1) # Name of the current project.
+project(HTTP_TOOL) # Name of the current project.
 
-add_executable(TOPIC_1) # Define a name for your executable.
+add_executable(HTTP_TOOL) # Define a name for your executable.
 
-set(target TOPIC_1) # Create a name for your target.
+set(target HTTP_TOOL) # Create a name for your target.
 
 # Here, you can add the files you want to add to your executable.
 target_sources(${target}
         PRIVATE
         main.cpp
+        option_parser.cpp
         )
 
 target_compile_features(${target} PRIVATE cxx_std_23) # We are using the newest language standards, so C++23.
@@ -68,5 +69,5 @@ find_package(Boost 1.70.0 COMPONENTS program_options system thread) # Try to fin
 # Check if the 'Boost' library/packages are found.
 if(Boost_FOUND)
     message("Boost library found!") # Show a message that the 'Boost' library is found.
-    target_link_libraries(TOPIC_1 Boost::program_options Boost::system Boost::thread) # Here, you are linking all the libraries available the 'Boost' library.
+    target_link_libraries(HTTP_TOOL Boost::program_options Boost::system Boost::thread) # Here, you are linking all the libraries available the 'Boost' library.
 endif()
