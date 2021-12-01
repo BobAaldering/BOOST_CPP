@@ -1,24 +1,32 @@
 #include <iostream>
 
 #include "option_parser.h"
+#include "weather_client_info.h"
+#include "weather_data_json.h"
 
 int main(int argc, char* argv[]) {
     option_parser parser{argc, argv};
 
-    parser.with_help("help_desc", "prints help diagnostics");
-    parser.add_string_positional("host_name", "host name for the server to get the HTTP response from");
-    parser.add_int_positional("port_number", "port number for the server to get the HTTP response from", 80);
-    parser.add_string_positional("target", "target character for the server to get the HTTP response from", "/");
-    parser.add_dbl_positional("http_version", "the HTTP version that is used for the HTTP request", 1.1);
+    parser.with_help("help_desc", "prints help description");
+    parser.add_flag_option("temperature", "prints the temperature level in degrees Celsius", true);
+    parser.add_flag_option("pressure", "prints the barometric pressure level");
+    parser.add_flag_option("humidity", "prints the humidity level");
+    parser.add_string_positional("country_code", "name of the country where you want to display the weather for");
+    parser.add_string_positional("city_name", "name of the city where you want to display the weather for");
 
     auto parsed_object = parser.parse_arguments();
 
-    if (!parsed_object.empty()) {
-        std::cout << "host name: " << parsed_object["host_name"].as<std::string>() << std::endl;
-        std::cout << "port number: " << parsed_object["port_number"].as<int>() << std::endl;
-        std::cout << "target: " << parsed_object["target"].as<std::string>() << std::endl;
-        std::cout << "HTTP version: " << parsed_object["http_version"].as<double>() << std::endl;
-    }
+    weather_client_info data{
+        parsed_object["temperature"].as<bool>(),
+        parsed_object["pressure"].as<bool>(),
+        parsed_object["humidity"].as<bool>(),
+        parsed_object["country_code"].as<std::string>(),
+        parsed_object["city_name"].as<std::string>()
+    };
+
+    weather_data_json json_object{};
+
+    json_object.run();
 
     return 0;
 }

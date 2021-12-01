@@ -10,6 +10,8 @@ target_sources(${target}
         PRIVATE
         main.cpp
         option_parser.cpp
+        weather_client_info.cpp
+        weather_data_json.cpp
         )
 
 target_compile_features(${target} PRIVATE cxx_std_23) # We are using the newest language standards, so C++23.
@@ -70,4 +72,11 @@ find_package(Boost 1.70.0 COMPONENTS program_options system thread) # Try to fin
 if(Boost_FOUND)
     message("Boost library found!") # Show a message that the 'Boost' library is found.
     target_link_libraries(HTTP_TOOL Boost::program_options Boost::system Boost::thread) # Here, you are linking all the libraries available the 'Boost' library.
+endif()
+
+find_package(OpenSSL REQUIRED)
+
+if (OpenSSL_FOUND)
+    message("OpenSSL library found!")
+    target_link_libraries(HTTP_TOOL ${OPENSSL_LIBRARIES})
 endif()
