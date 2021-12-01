@@ -8,7 +8,7 @@
 int main(int argc, char* argv[]) {
     option_parser parser{argc, argv};
 
-    parser.with_help("help_desc,d", "prints help description");
+    parser.with_help("help_desc", "prints help description");
     parser.add_flag_option("temperature,t", "prints the temperature level in degrees Celsius");
     parser.add_flag_option("min_temperature,l", "prints the minimum temperature");
     parser.add_flag_option("max_temperature,h", "prints the maximum temperature");
@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
         parsed_object.count("city_name") ? parsed_object["city_name"].as<std::string>() : ""
     };
 
-    weather_data_json json_object{data, "api.openweathermap.org", "/data/2.5/weather?q=", "19733fe7cf4a691b3fba8b1a8cffb44b"};
+    weather_data_json json_object{data, "api.openweathermap.org", "/data/2.5/weather?q=", "X"};
 
     weather_json_parser json_parser{data};
 

@@ -75,9 +75,10 @@ if(Boost_FOUND)
     target_link_libraries(WEATHER_APP Boost::program_options Boost::system Boost::thread) # Here, you are linking all the libraries available the 'Boost' library.
 endif()
 
-find_package(OpenSSL REQUIRED)
+find_package(OpenSSL REQUIRED) # Try to find your 'OpenSSL' package.
 
+# Check if the 'OpenSSL' library/packages are found.
 if (OpenSSL_FOUND)
-    message("OpenSSL library found!")
-    target_link_libraries(WEATHER_APP ${OPENSSL_LIBRARIES})
+    message("OpenSSL library found!") # Show a message that the 'OpenSSL' library is found.
+    target_link_libraries(WEATHER_APP ${OPENSSL_LIBRARIES}) # Here, you are linking all the libraries available the 'OpenSSL' library.
 endif()
