@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.21) # The minimum CMake version used.
-project(HTTP_TOOL) # Name of the current project.
+project(WEATHER_APP) # Name of the current project.
 
-add_executable(HTTP_TOOL) # Define a name for your executable.
+add_executable(WEATHER_APP) # Define a name for your executable.
 
-set(target HTTP_TOOL) # Create a name for your target.
+set(target WEATHER_APP) # Create a name for your target.
 
 # Here, you can add the files you want to add to your executable.
 target_sources(${target}
@@ -12,6 +12,7 @@ target_sources(${target}
         option_parser.cpp
         weather_client_info.cpp
         weather_data_json.cpp
+        weather_json_parser.cpp
         )
 
 target_compile_features(${target} PRIVATE cxx_std_23) # We are using the newest language standards, so C++23.
@@ -71,12 +72,12 @@ find_package(Boost 1.70.0 COMPONENTS program_options system thread) # Try to fin
 # Check if the 'Boost' library/packages are found.
 if(Boost_FOUND)
     message("Boost library found!") # Show a message that the 'Boost' library is found.
-    target_link_libraries(HTTP_TOOL Boost::program_options Boost::system Boost::thread) # Here, you are linking all the libraries available the 'Boost' library.
+    target_link_libraries(WEATHER_APP Boost::program_options Boost::system Boost::thread) # Here, you are linking all the libraries available the 'Boost' library.
 endif()
 
 find_package(OpenSSL REQUIRED)
 
 if (OpenSSL_FOUND)
     message("OpenSSL library found!")
-    target_link_libraries(HTTP_TOOL ${OPENSSL_LIBRARIES})
+    target_link_libraries(WEATHER_APP ${OPENSSL_LIBRARIES})
 endif()

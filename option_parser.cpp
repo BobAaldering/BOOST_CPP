@@ -20,7 +20,7 @@ void option_parser::with_help(const std::string &help_flag, const std::string &d
 [[maybe_unused]] void option_parser::add_flag_option(const std::string &long_flag, const std::string &description) {
     auto complete_description = description + " [bool]";
     m_options_description.add_options()
-        (long_flag.c_str(), boost::program_options::value<bool>(), complete_description.c_str());
+        (long_flag.c_str(), complete_description.c_str());
 }
 
 [[maybe_unused]] void option_parser::add_string_option(const std::string &long_flag, const std::string &description) {
@@ -128,8 +128,8 @@ void option_parser::add_dbl_positional(const std::string &long_flag, const std::
 
         boost::program_options::notify(m_options_map);
     }
-    catch (boost::program_options::error& error_message) {
-        std::cerr << "ERROR MESSAGE: " << error_message.what() << std::endl;
+    catch (const boost::program_options::error&e) {
+        std::cerr << "ERROR MESSAGE - PARSING PROGRAM OPTIONS NOT SUCCEEDED!" << std::endl;
     }
 
     if (m_options_map.count(m_help_flag))

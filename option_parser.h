@@ -1,9 +1,10 @@
 #ifndef HTTP_TOOL_OPTION_PARSER_H
 #define HTTP_TOOL_OPTION_PARSER_H
 
+#include <boost/program_options.hpp>
+
 #include <iomanip>
 #include <iostream>
-#include <boost/program_options.hpp>
 
 
 class option_parser {
