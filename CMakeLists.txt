@@ -9,11 +9,13 @@ set(target WEATHER_APP) # Create a name for your target.
 target_sources(${target}
         PRIVATE
         main.cpp
-        option_parser.cpp
-        weather_client_info.cpp
-        weather_data_json.cpp
-        weather_json_parser.cpp
+        ./src/option_parser.cpp # Here, all the *.cpp files are stored in a 'src' folder.
+        ./src/weather_client_info.cpp # Here, all the *.cpp files are stored in a 'src' folder.
+        ./src/weather_data_json.cpp # Here, all the *.cpp files are stored in a 'src' folder.
+        ./src/weather_json_parser.cpp # Here, all the *.cpp files are stored in a 'src' folder.
         )
+
+include_directories(./inc) # Instruct the compiler where to look for the given header files within this project.
 
 target_compile_features(${target} PRIVATE cxx_std_23) # We are using the newest language standards, so C++23.
 set_target_properties(${target} PROPERTIES CXX_EXTENSIONS OFF) # Turn of compiler specific language extensions.
