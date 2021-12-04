@@ -1,4 +1,5 @@
 # Boost your C++!
+##### By: Bob Aaldering (492152) and Nian Luisman (496439)
 
 Sometimes the `std` facilities are not sufficient in your C++ program. You want to have access to certain functions that are not available at all in the `std` namespace. However, these are often available in one of the many `Boost` libraries! So don't hesitate, and go through the tutorial that shows you how to install these libraries, and then actually write a program with various `Boost` facilities.
 
@@ -14,11 +15,12 @@ This course requires a short presentation covering the main topics of this subje
 
 ## How the program works
 
-For this assignment it was decided to deliver a fully working application, making use of various `Boost` facilities. The application retrieves it again. A number of arguments must be given to the program, together with the code of the country concerned and the place. The correct information is then shown to the program on the basis of the flags provided.
+For this assignment it was decided to deliver a fully working application, making use of various `Boost` facilities. The application obtains data from the weather. Various arguments can be passed to the program, such as `--temperature`. You must also name the code of your country, along with the city for which the weather is to be displayed. Ultimately, the requested data is retrieved via the internet and shown to the user.
 
 An example of how the program in question works:
 ```shell
-$ Usage: ./WEATHER_APP [FLAGS] <country_code> <city_name>
+$ ./WEATHER_APP --help_desc
+Usage: ./WEATHER_APP [FLAGS] <country_code> <city_name>
 "help_desc"             prints help description
 "temperature"           prints the temperature level in degrees Celsius [bool]
 "min_temperature"       prints the minimum temperature [bool]
@@ -36,7 +38,7 @@ MINIMUM TEMPERATURE: 4.31 °C
 MAXIMUM TEMPERATURE: 6.16 °C
 HUMIDITY: 76%
 
-$ ./WEAHTER_APP -t NL AMSTERDAM
+$ ./WEAHTER_APP -t NL Amsterdam
 WEATHER FOR: NL, Amsterdam
 TEMPERATURE: 6.28 °C
 ```
