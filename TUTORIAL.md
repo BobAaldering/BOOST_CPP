@@ -107,9 +107,9 @@ target_compile_options(${target} PRIVATE
 target_compile_options(${target} PRIVATE
         # set warnings for all build types
         $<$<CXX_COMPILER_ID:MSVC>:/Wall>
-        # debug optimisation in Debug
+        # Optimisation for 'Release' mode.
         $<$<AND:$<CXX_COMPILER_ID:MSVC>,$<CONFIG:Release>>:/O2>
-        # O3 optimisation in Release
+        # Optimisation in 'Debug'.
         $<$<AND:$<CXX_COMPILER_ID:MSVC>,$<CONFIG:Debug>>:/RTC1 /Od /Zi>
         )
 ```
