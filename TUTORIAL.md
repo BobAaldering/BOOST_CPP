@@ -1,5 +1,42 @@
 # Tutorial 'Boost your C++!'
 
+**Content of this tutorial:**
+```text
++ Introduction
++ Why using 'boost'?
++ General goal of this tutorial
++ First step, creating your 'CMakeLists.txt'
+| - + Download the 'Boost' library's
+| - + Add everything to your executable with CMake
+| - - + The start of your 'CMakeLists.txt'
+| - - + Trigger warnings for the compilers
+| - - + Enabling the 'Address Sanitizer'
+| - - + Adding 'Boost'
+| - - + Adding 'OpenSSL'
++ Second step, creating an 'option_parser'
+| - + Create a separate class, with fields and a constructor
+| - - + Configurable help functionality
+| - - + Adding methods to the 'option_parser'
+| - - + Now finally parse all options
+| - - + Print help diagnostics
+| - - + Creating your own option parser
++ Third step: saving all the 'weather_client_info'
+| - + Create a new class, with fields and a constructor
+| - - + Implementing getter methods
+| - - + Create an HTTPS request
+| - - + Creating an instance of this class
++ Fourth step: retrieving the weather data in 'weather_json_info'
+| - + Create a new class, with fields and a constructor
+| - - + Returning the JSON data
++ Final step: parsing the JSON object in 'weather_json_parser'
+| - + Create a new class, with fields and a constructor
+| - - + Let's print the data
++ Congratulations 🎉!
++ What we have learned
++ What the writers learned
++ References
+```
+
 ## Introduction
 
 In this tutorial an explanation is given about various libraries that can actually give your C++ program a boost!
@@ -8,6 +45,12 @@ The `Boost` library is used to add various functionalities to your C++ program.
 You will be guided how to download the `Boost` features, and make them available to your program, if not the executable.
 
 In addition, various `Boost` libraries are also developed, with examples of actually working programs.
+
+### Why using `Boost`?
+
+As has probably already been mentioned a number of times, `Boost` basically extends the `std` namespace with various functions, and above all other functionalities.
+For this reason, `Boost` is also used several times in the business world. After all, it is much more attractive for companies to use some functions of `Boost` in C++ development, than to implement these functionalities themselves. So companies are not going to reinvent this 'wheel' (in the form of extra functionalities that a C++ program can contain) again.
+This shows that it is useful to take a closer look at some `Boost` functionalities, in order to get an idea of how you can work with some facilities/functionalities.
 
 ### General goal of this tutorial
 
@@ -40,7 +83,7 @@ The following facilities of `Boost` are therefore used:
 
 In this first step of the project, an explanation is given on how to build everything for your program. CMake is used, which ensures that all requested functions are added to your executable, so that your program can be compiled properly.
 
-### Download the Boost library's
+### Download the `Boost` library's
 
 To make the facilities of the 'Boost' library available, you must first download it.
 For example, you can use a Linux terminal for this. This is useful if you are using WSL, where you build and debugged your C++ program in Linux.
@@ -156,7 +199,7 @@ if (HAS_ASAN AND USE_ASAN)
 endif ()
 ```
 
-#### Adding 'Boost'
+#### Adding `Boost`
 
 Now comes the most important part: making the correct `Boost` components available to your executable. First, a number of variables are activated. Feel free to change it yourself. If you do not want to use `multithreading`, you can indicate this by writing `OFF` at the correct variable.
 After this, it will search for the `Boost` library with `find_package(...)`. In this case, the search is for version with minimum `1.70.0`. With newer versions this can easily be changed.
@@ -178,7 +221,7 @@ if(Boost_FOUND)
 endif()
 ```
 
-#### Adding 'OpenSSL'
+#### Adding `OpenSSL`
 
 `OpenSSL` is an open source implementation of the SSL/TLS protocol. The core library, which is written in the C programming language, implements the basic cryptographic functions and provides various auxiliary functions. This makes it possible to make various requests via HTTPS. This makes it possible to make various requests via HTTPS. This is because the application uses an HTTPS request to retrieve the data from a server over the internet.
 
@@ -267,7 +310,7 @@ m_options_description.add_options()
 }
 ```
 
-#### Adding methods to the option parser
+#### Adding methods to the `option_parser`
 
 Of course, you want to add options to your option parser, which you can use if you pass arguments to your program. This is of course crucial, otherwise you cannot, for example, indicate that you only want to see the temperature. For example, you can call a certain method on this class, adding an option, with:
 
@@ -821,3 +864,13 @@ Unfortunately this doesn't work in C++... The web server of 'OpenWeatherMap' has
 The study on `Boost` has given us an advanced overview of what secret functions C++ can offer when you use `Boost`.
 
 Although `Boost` is a very difficult topic, with little documentation we hope that we have excited the reader with this tutorial to get started with C++, in combination with CMake, if not with `Boost`. It offers many beautiful functionalities for which you can create a simple yet impressive application.
+
+## References
+
+The following resources were used during the generation of this entire project. It contains both the resources used during the implementation generation for the project, along with various theoretical aspects.
+* Rene Rivera. (2007, 1 May). Who’s Using Boost? From: Boost.org. Read on 25 November 21, from https://www.boost.org/users/uses.html
+* Kohlhoff, C. M. K. (2021, 2 March). Networking TS compatibility - 1.78.0. From: Boost.org. Read on 1 December 2021, from https://www.boost.org/doc/libs/1_78_0/doc/html/boost_asio/net_ts.html
+* Den’s website. (2020, 12 May). SSL and TLS. Read on 1 December 2021, from https://dens.website/tutorials/cpp-asio/ssl-tls
+* Boost Library. (2008, 29 September). Stack Overflow. Read on 4 December 2021, from https://stackoverflow.com/questions/149268/boost-library
+* Parsing Command Line Arguments in C++? (2009, 14 May). Stack Overflow. Read on 5 December 2021, from https://stackoverflow.com/questions/865668/parsing-command-line-arguments-in-c
+* Falco, V. (2016, 21 June). WebSocket - 1.78.0. Boost.org. Read on 5 December 2021, from https://www.boost.org/doc/libs/1_78_0/libs/beast/doc/html/beast/using_websocket.html
