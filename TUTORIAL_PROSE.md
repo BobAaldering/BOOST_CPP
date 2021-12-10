@@ -4,6 +4,7 @@
 ```text
 + Introduction
 + Why using 'boost', and why is it important?
++ Typical applications of 'Boost'
 + General goal of this tutorial
 + First step, creating your 'CMakeLists.txt'
 | - + Download the 'Boost' library's
@@ -54,6 +55,18 @@ This shows that it is useful to take a closer look at some `Boost` functionaliti
 
 Another little fact: today `Boost` is one of the most widely used libraries outside the standard C++ library. It started with a total of only ten libraries that were added in the Library Technical Report (TR1). Subsequently, since the release of C++11, a new release is released every year that complies with the ISO standards. Now the 'C++ Standards Committee' uses the `Boost` set of libraries as a source for any new functions to be added to its standard libraries.
 
+### Typical applications of `Boost`
+
+If you want to do something making an HTTP request in C++, you're usually just out of luck. You want to parse the options that are passed to your program, but you can't. For example, for these examples `Boost` is already used. They are practical applications. Listed below are some of the `Boost` libraries that are commonly used. Please note that these are examples, some libraries are not necessarily used in this tutorial.
+
+* **Boost - asio** is a cross-platform C++ library for network and low-level I/O programming that provides developers with a consistent asynchronous model using a modern C++ approach.
+* **Boost - python** is a framework for interfacing Python and C++. It allows you to quickly and seamlessly expose C++ classes functions and objects to Python, and vice-versa, using no special tools -- just your C++ compiler.
+* **Boost - atomic** is a library that provides atomic data types and operations on these data types, as well as memory ordering constraints required for coordinating multiple threads through atomic variables. It implements the interface as defined by the C++11 standard, but makes this feature available for platforms lacking system/compiler support for this particular C++11 feature.
+* **Boost - beast** is a C++ header-only library serving as a foundation for writing interoperable networking libraries by providing low-level HTTP/1, WebSocket, and networking protocol vocabulary types and algorithms using the consistent asynchronous model of Boost - asio.
+* **Boost - circular buffer** is an STL (standard template library of C++) compliant container also known as ring or cyclic buffer.
+* **Boost - filesystem** is a library that provides facilities to manipulate files and directories, and the paths that identify them.
+* **Boost - multiplication** is a library with extended precision arithmetic types for floating point, integer and rational arithmetic. This applies to the standard types that are present in C++ for this.
+
 ### General goal of this tutorial
 
 The purpose of this tutorial is a general introduction to the facilities of `Boost`. A simple weather application is made for this. You can pass a number of arguments to the program, which are represented by a number of flags. A number of positional arguments must also be given, which in this case is the code of a country, together with a place of residence.
@@ -75,11 +88,11 @@ This tutorial will therefore go through exactly how this program is generated, a
 
 After going through this tutorial it is therefore certain that the user knows how to create a program that can use `Boost`. You start by making all the appends in your `CMakeLists.txt`, and end up with a fully working program.
 The following facilities of `Boost` are therefore used:
-* boost - program options
-* boost - asio
-* boost - asio/ssl
-* boost - property tree/json_parser
-* boost - any
+* Boost - program options
+* Boost - asio
+* Boost - asio/ssl
+* Boost - property tree/json_parser
+* Boost - any
 
 **An extra point:** to increase the readability of this tutorial, short 'notification' has been used at some points in code snippets with explanations, which can be recognized by `/* ~~~ ... ~~~ */ `. A notice has been given here instead of the '...'. For example, reference can be made to source files of the code, or include files.
 
