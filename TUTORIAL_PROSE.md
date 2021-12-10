@@ -3,7 +3,7 @@
 **Content of this tutorial:**
 ```text
 + Introduction
-+ Why using 'boost'?
++ Why using 'boost', and why is it important?
 + General goal of this tutorial
 + First step, creating your 'CMakeLists.txt'
 | - + Download the 'Boost' library's
@@ -44,21 +44,25 @@ In this tutorial an explanation is given about various libraries that can actual
 The `Boost` library is used to add various functionalities to your C++ program.
 You will be guided how to download the `Boost` features, and make them available to your program, if not the executable.
 
-In addition, various `Boost` libraries are also developed, with examples of actually working programs.
+Various `Boost` libraries have been used for this project, in order to become acquainted with some facilities offered herein. Actually, these facilities are provided in the accompanying program.
 
-### Why using `Boost`?
+### Why using `Boost`, and why is it important?
 
 As has probably already been mentioned a number of times, `Boost` basically extends the `std` namespace with various functions, and above all other functionalities.
 For this reason, `Boost` is also used several times in the business world. After all, it is much more attractive for companies to use some functions of `Boost` in C++ development, than to implement these functionalities themselves. So companies are not going to reinvent this 'wheel' (in the form of extra functionalities that a C++ program can contain) again.
 This shows that it is useful to take a closer look at some `Boost` functionalities, in order to get an idea of how you can work with some facilities/functionalities.
 
+Another little fact: today `Boost` is one of the most widely used libraries outside the standard C++ library. It started with a total of only ten libraries that were added in the Library Technical Report (TR1). Subsequently, since the release of C++11, a new release is released every year that complies with the ISO standards. Now the 'C++ Standards Committee' uses the `Boost` set of libraries as a source for any new functions to be added to its standard libraries.
+
 ### General goal of this tutorial
 
 The purpose of this tutorial is a general introduction to the facilities of `Boost`. A simple weather application is made for this. You can pass a number of arguments to the program, which are represented by a number of flags. A number of positional arguments must also be given, which in this case is the code of a country, together with a place of residence.
+
 Then these command line arguments are parsed using those `option_parser` facilities of `Boost`.
-Then, based on the code of the given country and place of residence, an attempt is made to retrieve the weather information.
-This is done by means of a client that contacts a server via an HTTPS connection. SSL is also automatically used here. In this case, this server is '[OpenWeatherMap](https://openweathermap.org/appid)', which returns a JSON object following the correct call. Within `Boost` `asio` is used here.
-Then this JSON object has to be parsed. Various functions of `Boost` are also used for this. In this case it is `property_tree - json_parser`.
+The weather information is now obtained based on the code of the country, together with the place of residence.
+This is done by means of a client that contacts a server via an HTTPS connection. SSL is also automatically used here. In this case, this server is '[OpenWeatherMap](https://openweathermap.org/appid)', which returns a JSON object following the correct call. 
+
+Within `Boost` `asio` is used here. The JSON object containing the weather data is then parsed. Various functions of `Boost` are also used for this. In this case it is `property_tree - json_parser`.
 Finally, the information from the JSON object is shown in the standard output. The information that is displayed is of course dependent on the arguments that are given to the program.
 
 This tutorial will therefore go through exactly how this program is generated, and which functions are used within `Boost`. The following goals are thus achieved:
